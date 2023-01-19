@@ -21,6 +21,8 @@ def Menu(CHOICE):
         hapusbarang()
     elif CHOICE ==3:
         Updatebarang()
+    elif CHOICE ==4:
+        Caribarang()
     elif CHOICE == 5:
         liatbarang()
     elif CHOICE == 6:
@@ -126,6 +128,34 @@ def Updatebarang():
     ''').lower()
     if lanjut == "y":
         Updatebarang()   
+    elif lanjut == "n":
+        Menutampilan()
+    else:
+        print("Inputan salah, Program kembali ke menu")
+        Menutampilan()
+
+def Caribarang():
+    print('Mencari Inventory')
+    print('===================')
+    item_description = input('Masukkan nama barang yang ingin di cari: ')
+    print("----------")
+    f = open(r'C:\Users\zethm\Documents\Vscode\tubes\Gudang.txt')
+    search = f.readlines()
+    f.close
+    for i, line in enumerate(search):
+        if item_description in line:
+            for b in search[i:i+1]:
+                print('Item:     ', b, end='')
+            for c in search[i+1:i+2]:
+                print('Quantity: ', c, end='')
+                print('----------')
+        
+    lanjut=input('''
+    tekan y jika ingin Melanjutkan program,
+    tekan n untuk kembali ke menu : 
+    ''').lower()
+    if lanjut == "y":
+        Caribarang()   
     elif lanjut == "n":
         Menutampilan()
     else:
